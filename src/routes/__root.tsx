@@ -77,14 +77,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Krishna Tools — Precision Carbide Cutting Tools" },
+      {
+        name: "description",
+        content:
+          "Krishna Tools imports modular drills, solid carbide drills, carbide end mills and high-speed reamers. OEM service and neutral packaging for domestic and global partners.",
+      },
+      { name: "author", content: "Krishna Tools" },
+      { property: "og:title", content: "Krishna Tools — Precision Carbide Cutting Tools" },
+      {
+        property: "og:description",
+        content:
+          "Importer of modular drills, solid carbide drills, carbide end mills and high-speed reamers. OEM service and neutral packaging for global partners.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
