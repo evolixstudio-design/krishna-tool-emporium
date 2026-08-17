@@ -244,7 +244,7 @@ function Index() {
                     height={900}
                     className="relative aspect-[16/10] w-full rounded-xl border border-border object-cover shadow-2xl"
                   />
-                  <div className="pointer-events-none absolute -right-2 -top-16 w-32 sm:-right-6 sm:w-40">
+                  <div className="pointer-events-none absolute right-4 -top-24 w-24 sm:right-8 sm:w-28">
                     <SpinningDrill />
                   </div>
                   <div className="absolute -bottom-5 -left-5 hidden rounded-lg border border-border bg-card/90 p-4 backdrop-blur-md sm:block">

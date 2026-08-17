@@ -219,8 +219,8 @@
 }
 
 @keyframes tool3d-spin {
-  from { transform: rotateX(-72deg) rotateZ(0deg); }
-  to { transform: rotateX(-72deg) rotateZ(360deg); }
+  from { transform: rotateX(8deg) rotateY(0deg); }
+  to { transform: rotateX(8deg) rotateY(360deg); }
 }
 @keyframes tool3d-float {
   0%, 100% { transform: translateY(-8px); }
