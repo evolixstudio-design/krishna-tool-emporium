@@ -6,6 +6,8 @@ import endmillImg from "@/assets/product-endmill.jpg";
 import reamerImg from "@/assets/product-reamer.jpg";
 import modularImg from "@/assets/product-modular.jpg";
 import facilityImg from "@/assets/facility.jpg";
+import { SpinningDrill, TiltCard } from "@/components/Tool3D";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
