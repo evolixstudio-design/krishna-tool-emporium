@@ -6,7 +6,7 @@ import endmillImg from "@/assets/product-endmill.jpg";
 import reamerImg from "@/assets/product-reamer.jpg";
 import modularImg from "@/assets/product-modular.jpg";
 import facilityImg from "@/assets/facility.jpg";
-import { SpinningDrill, TiltCard } from "@/components/Tool3D";
+import { ToolCarousel3D, TiltCard } from "@/components/Tool3D";
 
 
 export const Route = createFileRoute("/")({
@@ -244,9 +244,6 @@ function Index() {
                     height={900}
                     className="relative aspect-[16/10] w-full rounded-xl border border-border object-cover shadow-2xl"
                   />
-                  <div className="pointer-events-none absolute right-4 -top-24 w-24 sm:right-8 sm:w-28">
-                    <SpinningDrill />
-                  </div>
                   <div className="absolute -bottom-5 -left-5 hidden rounded-lg border border-border bg-card/90 p-4 backdrop-blur-md sm:block">
                     <p className="font-mono text-xs text-muted-foreground">QC INSPECTED</p>
                     <p className="font-display text-sm font-semibold">Lot #KT-2026-0814</p>
@@ -255,6 +252,32 @@ function Index() {
               </TiltCard>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* 3D SHOWCASE */}
+      <section className="relative overflow-hidden border-t border-border bg-card/20 py-16 lg:py-24">
+        <div className="absolute inset-0 bg-grid opacity-20" />
+        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Live 3D Showcase</p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              Our tool lines, in the round
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+              A rotating look at the four families we import and supply.
+            </p>
+          </div>
+          <div className="mt-10">
+            <ToolCarousel3D
+              items={[
+                { img: modularImg, label: "Modular Drills" },
+                { img: drillImg, label: "Solid Carbide Drills" },
+                { img: endmillImg, label: "Carbide End Mills" },
+                { img: reamerImg, label: "High-Speed Reamers" },
+              ]}
+            />
           </div>
         </div>
       </section>
