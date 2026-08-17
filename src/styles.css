@@ -207,3 +207,90 @@
   height: 1px;
   background: linear-gradient(to right, transparent, var(--amber), transparent);
 }
+
+/* ===== 3D animation utilities ===== */
+.tilt-scene {
+  perspective: 1000px;
+}
+.tilt-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@keyframes tool3d-spin {
+  from { transform: rotateX(-72deg) rotateZ(0deg); }
+  to { transform: rotateX(-72deg) rotateZ(360deg); }
+}
+@keyframes tool3d-float {
+  0%, 100% { transform: translateY(-8px); }
+  50% { transform: translateY(8px); }
+}
+
+.tool3d-stage {
+  perspective: 900px;
+  width: 100%;
+  height: 220px;
+  display: grid;
+  place-items: center;
+  animation: tool3d-float 6s ease-in-out infinite;
+}
+.tool3d-spin {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: tool3d-spin 7s linear infinite;
+}
+.tool3d-cyl {
+  position: absolute;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+.tool3d-shank { top: -150px; }
+.tool3d-body { top: -6px; }
+.tool3d-face {
+  position: absolute;
+  display: block;
+  width: 13px;
+  margin-left: -6.5px;
+  height: 150px;
+  background: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--steel) 70%, black),
+    var(--steel-light),
+    color-mix(in oklab, var(--steel) 60%, black)
+  );
+  backface-visibility: hidden;
+}
+.tool3d-body .tool3d-face { height: 130px; width: 12px; margin-left: -6px; }
+.tool3d-flute {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--amber) 55%, var(--steel-light)),
+    color-mix(in oklab, var(--steel-light) 80%, black) 70%
+  );
+}
+.tool3d-flute.is-groove {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--steel) 55%, black),
+    color-mix(in oklab, var(--steel) 30%, black)
+  );
+}
+.tool3d-tip {
+  position: absolute;
+  left: 50%;
+  top: 124px;
+  width: 0;
+  height: 0;
+  margin-left: -22px;
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-top: 34px solid color-mix(in oklab, var(--amber-bright) 75%, var(--steel-light));
+  filter: drop-shadow(0 0 12px color-mix(in oklab, var(--amber) 40%, transparent));
+  transform: translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool3d-stage, .tool3d-spin { animation: none; }
+  .tilt-inner { transition: none; }
+}
