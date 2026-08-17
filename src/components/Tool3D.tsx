@@ -1,46 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Pure-CSS 3D spinning carbide drill.
- * Built from rotated planes forming a cylinder shank + faceted flute body + tip.
- */
-export function SpinningDrill({ className = "" }: { className?: string }) {
-  const SEGMENTS = 14;
-  return (
-    <div className={`tool3d-stage ${className}`} aria-hidden="true">
-      <div className="tool3d-spin">
-        {/* shank */}
-        <div className="tool3d-cyl tool3d-shank">
-          {Array.from({ length: SEGMENTS }).map((_, i) => (
-            <span
-              key={`s${i}`}
-              className="tool3d-face"
-              style={{ transform: `rotateY(${(360 / SEGMENTS) * i}deg) translateZ(28px)` }}
-            />
-          ))}
-        </div>
-        {/* fluted body */}
-        <div className="tool3d-cyl tool3d-body">
-          {Array.from({ length: SEGMENTS }).map((_, i) => (
-            <span
-              key={`b${i}`}
-              className={`tool3d-face tool3d-flute ${i % 2 === 0 ? "is-groove" : ""}`}
-              style={{ transform: `rotateY(${(360 / SEGMENTS) * i}deg) translateZ(24px)` }}
-            />
-          ))}
-        </div>
-        {/* tip */}
-        <div className="tool3d-tip" />
-      </div>
-    </div>
-  );
-}
-
 /** Wraps children in a perspective container that tilts toward the pointer. */
 export function TiltCard({
   children,
   className = "",
-  max = 10,
+  max = 8,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -75,6 +39,35 @@ export function TiltCard({
       >
         {children}
       </div>
+    </div>
+  );
+}
+
+/**
+ * Rotating 3D carousel: four panels arranged on the faces of a spinning
+ * square prism. Pure CSS 3D transforms, no dependencies.
+ */
+export function ToolCarousel3D({
+  items,
+}: {
+  items: { img: string; label: string }[];
+}) {
+  const faces = items.slice(0, 4);
+  return (
+    <div className="carousel3d-stage">
+      <div className="carousel3d-spin">
+        {faces.map((f, i) => (
+          <figure
+            key={f.label}
+            className="carousel3d-face"
+            style={{ transform: `rotateY(${i * 90}deg) translateZ(var(--c3d-depth))` }}
+          >
+            <img src={f.img} alt={f.label} loading="lazy" className="carousel3d-img" />
+            <figcaption className="carousel3d-cap">{f.label}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <div className="carousel3d-shadow" />
     </div>
   );
 }
