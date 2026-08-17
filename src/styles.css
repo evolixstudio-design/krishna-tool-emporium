@@ -207,3 +207,85 @@
   height: 1px;
   background: linear-gradient(to right, transparent, var(--amber), transparent);
 }
+
+/* ===== 3D animation utilities ===== */
+.tilt-scene { perspective: 1000px; }
+.tilt-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@keyframes carousel3d-spin {
+  from { transform: rotateX(-8deg) rotateY(0deg); }
+  to { transform: rotateX(-8deg) rotateY(-360deg); }
+}
+@keyframes carousel3d-float {
+  0%, 100% { transform: translateY(-10px); }
+  50% { transform: translateY(10px); }
+}
+
+.carousel3d-stage {
+  --c3d-w: 260px;
+  --c3d-h: 180px;
+  --c3d-depth: 190px;
+  position: relative;
+  height: calc(var(--c3d-h) + 140px);
+  perspective: 1200px;
+  perspective-origin: 50% 45%;
+}
+@media (min-width: 640px) {
+  .carousel3d-stage { --c3d-w: 340px; --c3d-h: 230px; --c3d-depth: 250px; }
+}
+.carousel3d-spin {
+  position: absolute;
+  left: 50%;
+  top: 60px;
+  width: var(--c3d-w);
+  height: var(--c3d-h);
+  margin-left: calc(var(--c3d-w) / -2);
+  transform-style: preserve-3d;
+  animation: carousel3d-spin 18s linear infinite, carousel3d-float 7s ease-in-out infinite;
+}
+.carousel3d-face {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--card);
+  box-shadow: 0 24px 60px -20px rgb(0 0 0 / 0.7);
+}
+.carousel3d-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.carousel3d-cap {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 1.5rem 0.85rem 0.7rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--foreground);
+  background: linear-gradient(to top, oklch(0.14 0.012 255 / 0.92), transparent);
+}
+.carousel3d-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 320px;
+  height: 40px;
+  margin-left: -160px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, color-mix(in oklab, var(--amber) 22%, transparent), transparent 70%);
+  filter: blur(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel3d-spin { animation: none; }
+  .tilt-inner { transition: none; }
+}
