@@ -232,21 +232,27 @@ function Index() {
               </div>
             </div>
             <div className="animate-fade-up [animation-delay:120ms]">
-              <div className="relative">
-                <div className="absolute -inset-3 rounded-2xl bg-primary/10 blur-2xl" />
-                <img
-                  src={heroImg}
-                  alt="Carbide cutting tools arranged on a brushed steel surface"
-                  width={1600}
-                  height={900}
-                  className="relative aspect-[16/10] w-full rounded-xl border border-border object-cover shadow-2xl"
-                />
-                <div className="absolute -bottom-5 -left-5 hidden rounded-lg border border-border bg-card/90 p-4 backdrop-blur-md sm:block">
-                  <p className="font-mono text-xs text-muted-foreground">QC INSPECTED</p>
-                  <p className="font-display text-sm font-semibold">Lot #KT-2026-0814</p>
+              <TiltCard>
+                <div className="relative">
+                  <div className="absolute -inset-3 rounded-2xl bg-primary/10 blur-2xl" />
+                  <img
+                    src={heroImg}
+                    alt="Carbide cutting tools arranged on a brushed steel surface"
+                    width={1600}
+                    height={900}
+                    className="relative aspect-[16/10] w-full rounded-xl border border-border object-cover shadow-2xl"
+                  />
+                  <div className="pointer-events-none absolute -right-2 -top-16 w-32 sm:-right-6 sm:w-40">
+                    <SpinningDrill />
+                  </div>
+                  <div className="absolute -bottom-5 -left-5 hidden rounded-lg border border-border bg-card/90 p-4 backdrop-blur-md sm:block">
+                    <p className="font-mono text-xs text-muted-foreground">QC INSPECTED</p>
+                    <p className="font-display text-sm font-semibold">Lot #KT-2026-0814</p>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </div>
+
           </div>
         </div>
       </section>
